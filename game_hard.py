@@ -116,7 +116,7 @@ while not game_started and running:
 
 while running:
     dt = clock.tick(70)
-    spawn_timer += dt
+    spawn_timer += dt *2
 
     while game_over and running:
         clock.tick(60)
@@ -161,11 +161,10 @@ while running:
 
     if spawn_timer > spawn_interval:
         enemies.append(create_enemy(score))
-        enemies.append(create_enemy(score))
         spawn_timer = 0
         enemy_speed = min(10, enemy_speed+0.03)
         if spawn_interval > 500:
-            spawn_interval -= 10 if score < 30 else 20
+            spawn_interval -= 5 if score < 30 else 10
 
     current_time = pygame.time.get_ticks()
 
